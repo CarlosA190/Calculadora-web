@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="script/script.js"></script>
+</head>
+<body>
+
+  <div class="calculadora">
+    <h1 class="titulo">CALCULADORA BÁSICA</h1>
+    
+    <div id="pantalla">0</div>
+
+    <div class="botones">
+        <button class="numero" onclick="agregar('7')">7</button>
+        <button class="numero" onclick="agregar('8')">8</button>
+        <button class="numero" onclick="agregar('9')">9</button>
+        <button class="operador" onclick="agregar('/')">/</button>
+
+        <button class="numero" onclick="agregar('4')">4</button>
+        <button class="numero" onclick="agregar('5')">5</button>
+        <button class="numero" onclick="agregar('6')">6</button>
+        <button class="operador" onclick="agregar('*')">*</button>
+
+        <button class="numero" onclick="agregar('1')">1</button>
+        <button class="numero" onclick="agregar('2')">2</button>
+        <button class="numero" onclick="agregar('3')">3</button>
+        <button class="operador" onclick="agregar('-')">-</button>
+
+        <button class="limpiar" onclick="limpiar()">C</button>
+        <button class="numero" onclick="agregar('0')">0</button>
+        <button class="igual" onclick="calcular()">=</button>
+        <button class="operador" onclick="agregar('+')">+</button>
+ 
+</div>
+
+   </div>
+    <footer class="footer">© 2026 Dev-xGL24x. Todos los derechos reservados.</footer>
+</div>
+
+<!-- <script>
+    function agregar(valor) {
+        let pantalla = document.getElementById("pantalla");
+
+        if (pantalla.textContent === "0") {
+            pantalla.textContent = valor;
+        } else {
+            pantalla.textContent += valor;
+        }
+    }
+
+    function calcular() {
+        let pantalla = document.getElementById("pantalla");
+        let expresion = pantalla.textContent;
+
+        // Validar que la expresión no termine en operador
+        if (/[+\-*/]$/.test(expresion)) {
+            return;
+        }
+
+        let resultado = evaluarExpresion(expresion);
+        
+        if (resultado === null) {
+            pantalla.textContent = "Error";
+        } else {
+            pantalla.textContent = Math.round(resultado * 100000000) / 100000000;
+        }
+    }
+
+    function evaluarExpresion(expresion) {
+        // Primero resolver multiplicaciones y divisiones
+        let numeros = [];
+        let operadores = [];
+        let numeroActual = "";
+        
+        for (let i = 0; i < expresion.length; i++) {
+            let char = expresion[i];
+            
+            if (char === '+' || char === '-' || char === '*' || char === '/') {
+                // Manejar números negativos
+                if (char === '-' && (i === 0 || '+-*/'.includes(expresion[i-1]))) {
+                    numeroActual += char;
+                } else {
+                    if (numeroActual === "") return null;
+                    numeros.push(parseFloat(numeroActual));
+                    operadores.push(char);
+                    numeroActual = "";
+                }
+            } else {
+                numeroActual += char;
+            }
+        }
+        
+        if (numeroActual === "") return null;
+        numeros.push(parseFloat(numeroActual));
+
+        // Validar números
+        for (let num of numeros) {
+            if (isNaN(num)) return null;
+        }
+
+        // Resolver * y / primero
+        let i = 0;
+        while (i < operadores.length) {
+            if (operadores[i] === '*') {
+                numeros[i] = numeros[i] * numeros[i + 1];
+                numeros.splice(i + 1, 1);
+                operadores.splice(i, 1);
+            } else if (operadores[i] === '/') {
+                if (numeros[i + 1] === 0) return null; // División por cero
+                numeros[i] = numeros[i] / numeros[i + 1];
+                numeros.splice(i + 1, 1);
+                operadores.splice(i, 1);
+            } else {
+                i++;
+            }
+        }
+
+        // Resolver + y -
+        let resultado = numeros[0];
+        for (let i = 0; i < operadores.length; i++) {
+            if (operadores[i] === '+') {
+                resultado = resultado + numeros[i + 1];
+            } else if (operadores[i] === '-') {
+                resultado = resultado - numeros[i + 1];
+            }
+        }
+
+        return isFinite(resultado) ? resultado : null;
+    }
+
+    function limpiar() {
+        document.getElementById("pantalla").textContent = "0";
+    }
+</script> -->
+
+</body>
+</html>
